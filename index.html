@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GET Request Example</title>
+    <script>
+        async function sendGetRequest() {
+            var payload = {
+                "type": "get",
+                "farmer_id": 1001
+            };
+
+            try {
+                const response = await fetch(`http://agritechsolutions.rf.gd/pump.php?type=${payload.type}&farmer_id=${payload.farmer_id}`);
+                const data = await response.json();
+                document.getElementById("response").innerHTML = JSON.stringify(data, null, 2);
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>GET Request Example</h1>
+    <button onclick="sendGetRequest()">Send GET Request</button>
+    <pre id="response"></pre>
+</body>
+</html>
